@@ -20,8 +20,8 @@ pipeline {
         sh "poetry run pytest"
       }
     }
-    stage('Build stage') {
-      step {
+    stage("Build stage") {
+      steps {
           withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
               sh 'docker build -t phongtt91/flash-docker:v1 .'
               sh 'docker push phongtt91/flash-docker:v1 .'
